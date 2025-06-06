@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Grade Checker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #fafbfc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        #result {
+            font-size: 1.3em;
+            color: #222;
+            border: 1px solid #ddd;
+            padding: 18px 32px;
+            border-radius: 6px;
+            background: #fff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            min-width: 200px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="result">Grade will appear here.</div>
+    <script>
+        function getGrade(marks) {
+            if (marks < 0 || marks > 100 || isNaN(marks)) return "Invalid marks.";
+            if (marks < 60) return "F";
+            if (marks < 70) return "D";
+            if (marks < 80) return "C";
+            if (marks < 90) return "B";
+            return "A";
+        }
+
+        // Prompt user for marks
+        var input = prompt("Enter your marks (0-100):");
+        var resultText = "";
+
+        if (input === null) {
+            resultText = "No input provided.";
+        } else {
+            var marks = Number(input);
+            var grade = getGrade(marks);
+            if (grade === "Invalid marks.") {
+                resultText = "Please enter valid marks between 0 and 100.";
+            } else {
+                resultText = "Your Grade: " + grade;
+            }
+        }
+
+        document.getElementById('result').textContent = resultText;
+    </script>
+</body>
+</html>

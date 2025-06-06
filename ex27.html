@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Word Repeater</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px;
+        }
+        ol {
+            margin: 20px;
+            padding-left: 30px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            min-width: 200px;
+        }
+        li {
+            margin: 8px 0;
+            padding: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div id="output"></div>
+
+    <script>
+        // Get user input
+        const word = prompt("Enter a word:");
+        const count = prompt("How many times to repeat it?");
+        const outputDiv = document.getElementById('output');
+
+        // Input validation
+        if (!word || !count) {
+            outputDiv.innerHTML = "<p>Operation cancelled or invalid input</p>";
+        } else if (isNaN(count) || count < 1) {
+            outputDiv.innerHTML = "<p>Please enter a valid number greater than 0</p>";
+        } else {
+            // Create numbered list
+            let listHTML = "<ol>";
+            for (let i = 1; i <= count; i++) {
+                listHTML += `<li>${word} (${i})</li>`;
+            }
+            listHTML += "</ol>";
+            outputDiv.innerHTML = listHTML;
+        }
+    </script>
+</body>
+</html>
